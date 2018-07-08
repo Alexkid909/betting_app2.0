@@ -1,0 +1,17 @@
+<section>
+  <div class="container">
+    <div class="row section-header">
+      <h2>Your Betting Slip</h2>
+    </div>
+    <div class="row section-body">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-start" *ngFor="let bet of slipBets">
+          <div>{{bet.name}}</div>
+          <div>{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
+          <div><input [(ngModel)]="bet.stake"/></div>
+          <div>{{bet.return}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

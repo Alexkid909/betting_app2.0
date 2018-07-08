@@ -1,0 +1,16 @@
+<section>
+    <div class="container">
+        <div class="row section-header">
+            <h2>Available Bets</h2>
+        </div>
+        <div *ngFor="let event of events" class="row section-body">
+            <div class="col-md-12">
+                <div><h3>{{event.name}}</h3></div>
+                <div (click)="addBetToSlip(bet)" class="d-flex justify-content-start" *ngFor="let bet of event.bets">
+                  <div>{{bet.name}}</div>
+                  <div>{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
