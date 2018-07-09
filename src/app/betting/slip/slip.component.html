@@ -5,13 +5,16 @@
     </div>
     <div class="row section-body">
       <div class="col-md-12">
-        <div class="d-flex justify-content-start" *ngFor="let bet of slipBets">
-          <div>{{bet.name}}</div>
-          <div>{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
-          <div><input [(ngModel)]="bet.stake"/></div>
-          <div>{{bet.return}}</div>
+        <div class="bet d-flex justify-content-start" *ngFor="let bet of slipBets">
+          <div class="name">{{bet.name}}</div>
+          <div class="odds">{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
+          <div class="stake"><input [(ngModel)]="bet.stake"/></div>
+          <div class="return">{{((bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake) | currency:'GBP'}}</div>
         </div>
       </div>
+    </div>
+    <div class="row section-footer">
+      <button (click)="placeBets()">Place Bets</button>
     </div>
   </div>
 </section>

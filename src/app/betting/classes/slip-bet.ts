@@ -6,7 +6,7 @@ export class SlipBet extends Bet {
         this.event = bet.event;
         this.name = bet.name;
         this.odds = bet.odds;
-        this.stake = bet.stake || 0;
+        this.stake = bet.stake || 1;
     }
     stake: number;
 }

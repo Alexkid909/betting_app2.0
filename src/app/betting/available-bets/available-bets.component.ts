@@ -3,11 +3,11 @@ import {Bet} from '../classes/bet';
 import {BettingService} from '../betting.service';
 
 @Component({
-  selector: 'app-bets',
-  templateUrl: './bets.component.html',
-  styleUrls: ['./bets.component.scss']
+  selector: 'app-available-bets',
+  templateUrl: './available-bets.component.html',
+  styleUrls: ['./available-bets.component.scss']
 })
-export class BetsComponent implements OnInit {
+export class AvailableBetsComponent implements OnInit {
 
   events: Array<any>;
 
@@ -28,10 +28,7 @@ export class BetsComponent implements OnInit {
             });
             return events;
           })
-          .subscribe(response => {
-            console.log(response);
-            this.events = response;
-          });
+          .subscribe(response => this.events = response);
   }
 
     addBetToSlip(bet: Bet) {

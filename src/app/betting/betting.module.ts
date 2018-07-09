@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BettingRoutingModule } from './betting-routing.module';
-import { BetsComponent } from './bets/bets.component';
-import {BettingService} from './betting.service';
-import {HttpClientModule} from '@angular/common/http';
+import { AvailableBetsComponent } from './available-bets/available-bets.component';
+import { BettingService } from './betting.service';
+import { HttpClientModule } from '@angular/common/http';
 import { SlipComponent } from './slip/slip.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { PlacedBetsComponent } from './placed-bets/placed-bets.component';
+import { BettingComponent } from './betting/betting.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    BettingRoutingModule,
     HttpClientModule,
-      FormsModule
+    FormsModule
   ],
   declarations: [
-      BetsComponent,
-      SlipComponent
+      AvailableBetsComponent,
+      SlipComponent,
+      PlacedBetsComponent,
+      BettingComponent
   ],
   providers: [
     BettingService
   ],
   exports: [
-      BetsComponent,
+      AvailableBetsComponent,
       SlipComponent
   ]
 })
