@@ -1,0 +1,210 @@
+$indigo: rgb(100, 100, 240);
+$dark-blue: rgb(19, 44, 108);
+$light-blue: rgb(28, 81, 225);
+$mid-grey: rgb(125, 125, 125);
+$light-grey: rgb(200, 200, 200);
+$red: rgb(169, 41, 41);
+
+::ng-deep {
+
+  body {
+    font-size: 4vw;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1,h2, h3, h4 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1.125rem;
+  }
+
+  section {
+    .section-header {
+       padding: 0.75rem;
+    }
+  }
+
+  .px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .toast-container {
+    &.toast-top-full-width, &.toast-bottom-full-width  {
+      .toast {
+        width: 100%;
+      }
+    }
+    .toast {
+      border: none;
+      border-radius: 0;
+    }
+  }
+
+  .loader {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    .loader-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: $light-grey;
+      sk-wandering-cubes {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  app-betting {
+    .betting-container {
+      max-height: 100vh;
+      max-width: 100vw;
+      overflow: hidden;
+    }
+
+  }
+
+  app-available-bets {
+    div[class^="col-"] {
+      @extend .px-0;
+    }
+    .event-name {
+      background-color: $dark-blue;
+      color: white;
+      h4 {
+        margin-bottom: 0;
+      }
+    }
+    .bet {
+      background: linear-gradient(to  bottom, white 50%, rgb(235, 235, 235));
+      color: $mid-grey;
+      border-bottom-color: $light-blue;
+    }
+  }
+
+  app-available-bets, app-slip {
+    .event-name {
+      padding: 0.75rem;
+    }
+    .bet {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  .betting-container {
+    position: relative;
+  }
+
+  .bet {
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid white;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    .event {
+      align-self: flex-end;
+    }
+  }
+
+  .app-container {
+    height: 100%;
+    width: 100%;
+    .nav {
+      color: white;
+      background-color: $red;
+      .nav-item {
+        padding: 1rem 0.5rem;
+        .slip-bet-count {
+          background-color: $dark-blue;
+          display: inline-block;
+          border: 2px solid white;
+          border-radius: 100%;
+          width: 1.75rem;
+          height: 1.75rem;
+          text-align: center;
+          span {
+            vertical-align: middle;
+          }
+        }
+      }
+      a {
+        color: white;
+      }
+    }
+  }
+
+  app-slip {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 500ms ease-in;
+    background-color: transparentize($dark-blue, 0.1);
+    color: white;
+    &.active {
+      transform: translateX(0);
+    }
+
+    .bet {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      .name-container {
+        flex-grow: 3;
+      }
+      .stake-container {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        &>div {
+          display: flex;
+          flex-basis: 40%;
+          justify-content: center;
+          flex-direction: column;
+        }
+        .odds {
+          order: 2;
+          text-align: right;
+          padding: 0 0.5rem;
+        }
+        .stake {
+          order: 1;
+          input {
+            max-width: 5rem;
+            text-align: center;
+          }
+        }
+        .return {
+          order: 3;
+        }
+      }
+    }
+
+    .btn {
+      margin-top: 0.75rem;
+    }
+  }
+}

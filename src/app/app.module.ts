@@ -5,8 +5,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {BettingModule} from './betting/betting.module';
 import {AppRoutingModule} from './app-routing.module';
-import {AlertModule} from 'ngx-alerts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {EventsService} from './events.service';
+import {BettingService} from './betting/betting.service';
+import {ToastrModule} from 'ngx-toastr';
+import {NgSpinKitModule} from 'ng-spin-kit';
 
 
 @NgModule({
@@ -19,9 +22,18 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BettingModule,
       BrowserAnimationsModule,
       BrowserModule,
-      AlertModule.forRoot({maxMessages: 5, timeout: 5000})
+      ToastrModule.forRoot({
+          timeOut: 3000,
+          positionClass: 'toast-bottom-full-width',
+          progressBar: true,
+          progressAnimation: 'increasing'
+      }),
+      NgSpinKitModule
   ],
-  providers: [],
+  providers: [
+      EventsService,
+      BettingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

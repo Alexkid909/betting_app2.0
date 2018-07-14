@@ -5,7 +5,10 @@ import {PlacedBet} from '../classes/placed-bets';
 @Component({
   selector: 'app-placed-bets',
   templateUrl: './placed-bets.component.html',
-  styleUrls: ['./placed-bets.component.scss']
+  styleUrls: [
+      './placed-bets.component.scss',
+      '../styles/style.scss'
+  ]
 })
 export class PlacedBetsComponent implements OnInit {
 

@@ -40,6 +40,7 @@ export class BettingService {
     });
   }
   emitSlipBets() {
+    console.log(this.slipBets.length);
     this.slipBetsSubject.next(this.slipBets);
   }
 
@@ -60,7 +61,7 @@ export class BettingService {
     const responses = forkJoin(postCalls);
     responses.subscribe((placedBets: Array<PlacedBet>) => {
       this.updatePlacedBets(placedBets);
-      this.slipBets = [];
+      setTimeout(() => this.slipBets = [], 500);
       this.emitSlipBets();
       this.emitPlacedBets();
     });

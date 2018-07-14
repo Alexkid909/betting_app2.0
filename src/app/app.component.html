@@ -1,5 +1,29 @@
-<div>
-    <a routerLink="/placed-bets">Placed Bets</a>
+<div class="app-container">
+    <div class="nav">
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="navbar d-flex justify-content-between">
+                        <div *ngIf="currentRoute === '/'" class="nav-item">
+                            <a routerLink="/placed-bets">Placed Bets</a>
+                        </div>
+                        <div *ngIf="currentRoute !== '/'" class="nav-item">
+                            <a routerLink="/">Available Bets</a>
+                        </div>
+                        <div *ngIf="currentRoute === '/'" class="nav-item" (click)="toggleSlip()">
+                            <span>Slip</span>
+                            <div class="slip-bet-count"><span>{{slipBetCount}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+    <div class="loader" *ngIf="loading">
+        <div class="loader-container">
+            <sk-wandering-cubes [color]="'#132C6C'"></sk-wandering-cubes>
+        </div>
+    </div>
 </div>
-<router-outlet></router-outlet>
-<ngx-alerts></ngx-alerts>
+

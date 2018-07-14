@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SlipBet} from '../classes/slip-bet';
 import {BettingService} from '../betting.service';
 import {PlacedBet} from '../classes/placed-bets';
 import {AlertService} from 'ngx-alerts';
+import {EventsService} from '../../events.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-slip',
@@ -15,20 +17,24 @@ export class SlipComponent implements OnInit {
 
   constructor(
       private bettingService: BettingService,
-      private alertService: AlertService
+      private toastr: ToastrService,
+      private eventsService: EventsService
   ) { }
 
   placeBets() {
     this.bettingService.placeSlipBets().subscribe((placedBets: Array<PlacedBet>) => {
-      this.alertService.success('Your bets have been placed');
+      this.eventsService.toggleSlipStatus();
+      this.toastr.success(
+          'Your bets have been placed, good luck!');
+    }, error => {
+        this.toastr.error('Oops, something went wrong! Please try again.');
     });
   }
 
   ngOnInit() {
     this.bettingService.slipBetsSubject.subscribe((slipBets: Array<SlipBet>) => {
       this.slipBets = slipBets;
-    });
-
+    }, error => this.toastr.error('Ooops, something went wrong!, Please try again.'));
   }
 
 }

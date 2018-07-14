@@ -1,20 +1,38 @@
 <section>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row section-header">
-      <h2>Your Betting Slip</h2>
-    </div>
-    <div class="row section-body">
-      <div class="col-md-12">
-        <div class="bet d-flex justify-content-start" *ngFor="let bet of slipBets">
-          <div class="name">{{bet.name}}</div>
-          <div class="odds">{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
-          <div class="stake"><input [(ngModel)]="bet.stake"/></div>
-          <div class="return">{{((bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake) | currency:'GBP'}}</div>
-        </div>
+      <div class="col-12 ">
+        <h2>Your Betting Slip</h2>
       </div>
     </div>
+  </div>
+
+  <div class="container-fluid container-full">
+    <div class="row section-body">
+      <form class="col-md-12 px-0">
+        <div class="d-flex bet" *ngFor="let bet of slipBets">
+          <div class="name-container">
+            <div class="name">{{bet.name}}</div>
+            <div class="event">To win {{bet.event}}</div>
+          </div>
+          <div class="stake-container">
+            <div class="odds">{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
+            <div class="stake"><input min="1" type="number" name="bet-stake" class="form-control" [(ngModel)]="bet.stake"/></div>
+            <div class="return">
+              <!--<span>-->
+                {{(bet.stake / bet.odds.denominator * bet.odds.numerator + bet.stake) | currency:'GBP'}}
+              <!--</span>-->
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container-fluid">
     <div class="row section-footer">
-      <button (click)="placeBets()">Place Bets</button>
+      <div class="col-12">
+        <button class="btn btn-primary btn-warning btn-lg btn-block" (click)="placeBets()">Place Bets</button>
+      </div>
     </div>
   </div>
 </section>

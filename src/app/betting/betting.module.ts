@@ -8,6 +8,7 @@ import { SlipComponent } from './slip/slip.component';
 import { FormsModule } from '@angular/forms';
 import { PlacedBetsComponent } from './placed-bets/placed-bets.component';
 import { BettingComponent } from './betting/betting.component';
+import {EventsService} from '../events.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { BettingComponent } from './betting/betting.component';
       BettingComponent
   ],
   providers: [
-    BettingService
+    BettingService,
+    EventsService
   ],
   exports: [
       AvailableBetsComponent,
