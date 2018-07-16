@@ -5,9 +5,11 @@
                 <div class="event-name">
                     <h4>{{event.name}}</h4>
                 </div>
-                <div (click)="addBetToSlip(bet)" class="d-flex bet" *ngFor="let bet of event.bets">
-                  <div class="bet-name">{{bet.name}}</div>
-                  <div class="bet-odds">{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
+                <div (click)="addBetToSlip(bet)" *ngFor="let bet of event.bets">
+                    <div class="d-flex bet d-flex justify-content-between">
+                        <div class="bet-name">{{bet.name}}</div>
+                        <app-odds [bet]="bet"></app-odds>
+                    </div>
                 </div>
             </div>
         </div>

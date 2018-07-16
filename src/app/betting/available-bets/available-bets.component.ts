@@ -51,7 +51,6 @@ export class AvailableBetsComponent implements OnInit {
       this.bettingService
           .addBetToSlip(bet)
           .subscribe(response => {
-            console.log(response);
             this.toastrService.info('Your bet has been added to your slip');
       }, error => this.toastrService.error('Ooops, something went wrong!, Please try again.'));
     }

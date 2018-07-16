@@ -1,7 +1,7 @@
 <section>
   <div class="container-fluid">
     <div class="row section-header">
-      <div class="col-12 ">
+      <div class="col-12 text-center">
         <h2>Your Betting Slip</h2>
       </div>
     </div>
@@ -16,7 +16,7 @@
             <div class="event">To win {{bet.event}}</div>
           </div>
           <div class="stake-container">
-            <div class="odds">{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
+            <app-odds [bet]="bet"></app-odds>
             <div class="stake"><input min="1" type="number" name="bet-stake" class="form-control" [(ngModel)]="bet.stake"/></div>
             <div class="return">
               <!--<span>-->

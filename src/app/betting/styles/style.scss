@@ -5,6 +5,11 @@ $mid-grey: rgb(125, 125, 125);
 $light-grey: rgb(200, 200, 200);
 $red: rgb(169, 41, 41);
 
+$navHeight: 19vw;
+$menuHeight: 15vw;
+$desktopNavHeight: 6vw;
+$desktopMenuHeight: 4vw;
+
 ::ng-deep {
 
   body {
@@ -56,10 +61,17 @@ $red: rgb(169, 41, 41);
   }
 
   .loader {
+    opacity: 1;
+    z-index: 2;
     position: fixed;
     height: 100%;
     width: 100%;
     top: 0;
+    &.inactive {
+      opacity: 0;
+      z-index: -1;
+      transition: all 0.5s linear;
+    }
     .loader-container {
       position: relative;
       width: 100%;
@@ -83,12 +95,13 @@ $red: rgb(169, 41, 41);
 
   }
 
-  app-available-bets {
+  app-available-bets, app-placed-bets {
     div[class^="col-"] {
+      @extend .px-0;
       @extend .px-0;
     }
     .event-name {
-      background-color: $dark-blue;
+      background-color: $red;
       color: white;
       h4 {
         margin-bottom: 0;
@@ -130,23 +143,89 @@ $red: rgb(169, 41, 41);
   .app-container {
     height: 100%;
     width: 100%;
+    padding-top: $navHeight + $menuHeight;
+    .header {
+      background-color: $dark-blue;
+      position: fixed;
+      top: 0;
+      height: $navHeight + $menuHeight;
+      width: 100%;
+    }
+
     .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: $navHeight;
       color: white;
-      background-color: $red;
-      .nav-item {
-        padding: 1rem 0.5rem;
-        .slip-bet-count {
-          background-color: $dark-blue;
-          display: inline-block;
-          border: 2px solid white;
-          border-radius: 100%;
-          width: 1.75rem;
-          height: 1.75rem;
-          text-align: center;
-          span {
-            vertical-align: middle;
+      background-color: transparent;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      .slip-bet-count {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -25%);
+        background-color: $red;
+        display: inline-block;
+        border: 2px solid white;
+        border-radius: 100%;
+        width: 1.75rem;
+        height: 1.75rem;
+        text-align: center;
+        span {
+          vertical-align: middle;
+        }
+      }
+      .brand-logo {
+        margin-bottom: 0.5rem;
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+        position: relative;
+
+        .fa {
+          &.fa-bars {
+            font-size: 2.5rem;
           }
         }
+      }
+
+
+
+    }
+  }
+
+  app-menu {
+    position: fixed;
+    width: 100%;
+    top: $navHeight;
+    height: $menuHeight;
+    right: 0;
+    z-index: 2;
+    transition: transform 500ms ease-in;
+    background-color: transparent;
+    color: white;
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      position: relative;
+      padding: 0 0.85rem;
+
+      .fa {
+        &.fa-bars {
+          font-size: 2.5rem;
+        }
+      }
+
+      .nav-item {
+        padding: 0 0.5rem;
       }
       a {
         color: white;
@@ -162,7 +241,7 @@ $red: rgb(169, 41, 41);
     right: 0;
     transform: translateX(100%);
     transition: transform 500ms ease-in;
-    background-color: transparentize($dark-blue, 0.1);
+    background-color: transparentize($red, 0.1);
     color: white;
     &.active {
       transform: translateX(0);
@@ -185,10 +264,12 @@ $red: rgb(169, 41, 41);
           justify-content: center;
           flex-direction: column;
         }
-        .odds {
+        app-odds {
           order: 2;
           text-align: right;
           padding: 0 0.5rem;
+          align-items: center;
+          display: flex;
         }
         .stake {
           order: 1;
@@ -207,4 +288,57 @@ $red: rgb(169, 41, 41);
       margin-top: 0.75rem;
     }
   }
+
+  @media screen and (min-width: 768px) {
+
+
+    body {
+      font-size: 1vw;
+    }
+
+    .app-container {
+      padding-top: $desktopNavHeight + $desktopMenuHeight;
+      .header {
+        height: $desktopNavHeight + $desktopMenuHeight;
+      }
+
+      .nav {
+        height: $desktopNavHeight;
+      }
+    }
+
+    app-menu {
+      top: $desktopNavHeight;
+      height: $desktopMenuHeight;
+      right: 0;
+      z-index: 2;
+      transition: transform 500ms ease-in;
+      background-color: transparent;
+      color: white;
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        position: relative;
+        padding: 0 0.85rem;
+
+        .fa {
+          &.fa-bars {
+            font-size: 2.5rem;
+          }
+        }
+
+        .nav-item {
+          padding: 0 0.5rem;
+        }
+        a {
+          color: white;
+        }
+      }
+    }
+
+
+  }
 }
+

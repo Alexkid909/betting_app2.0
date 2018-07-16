@@ -6,10 +6,17 @@ export class EventsService {
 
   slipStatus: boolean;
   slipStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  menuStatus = true;
+  menuStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   loadingStatus: boolean;
   loadingStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  decimalOddsStatus: boolean;
+  decimalOdsStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() { }
+  constructor() {
+      this.loadingStatus = true;
+      this.loadingStatusSubject.next(this.loadingStatus);
+  }
 
   toggleSlipStatus() {
    this.slipStatus = !this.slipStatus;
@@ -17,9 +24,14 @@ export class EventsService {
   }
 
   setLoadingStatus(status: boolean) {
-    this.loadingStatus = status;
-    this.loadingStatusSubject.next(this.loadingStatus);
+    setTimeout(() => {
+        this.loadingStatus = status;
+        this.loadingStatusSubject.next(this.loadingStatus);
+    }, (status) ? 0 : 1000);
   }
 
-
+  setDecimalOddsStatus(status: boolean) {
+      this.decimalOddsStatus = status;
+      this.decimalOdsStatusSubject.next(this.decimalOddsStatus);
+  }
 }

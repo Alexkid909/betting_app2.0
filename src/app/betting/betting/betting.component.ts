@@ -18,7 +18,6 @@ export class BettingComponent implements OnInit {
   ngOnInit() {
       this.eventsService.slipStatusSubject.subscribe((status: boolean) => {
           this.slipStatus = status;
-          console.log(this.slipStatus);
       });
   }
 

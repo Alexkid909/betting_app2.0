@@ -3,16 +3,31 @@
     <div class="row section-header">
       <h2>Your Placed Bets</h2>
     </div>
-    <div class="row section-body">
-      <div class="col-md-12">
-        <div class="d-flex bet" *ngFor="let bet of placedBets">
-          <div class="name">{{bet.name}}</div>
-          <div class="stake">{{bet.stake}}</div>
-          <div class="return">{{((bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake) | currency:'GBP'}}</div>
-          <div class="odds">{{bet.odds.numerator}}/{{bet.odds.denominator}}</div>
-          <div class="odds">{{bet.bet_ref}}</div>
+    <div class="row bet" *ngFor="let bet of placedBets">
+        <div class="col-2 ref">
+          <div>
+            Ref
+          </div>
+          <div>
+            {{bet.bet_ref}}
+          </div>
+        </div>
+        <div class="col-6 name">
+          <div>
+            <app-odds [bet]="bet"></app-odds>
+          </div>
+          <div>
+            To win {{bet.event}}
+          </div>
+        </div>
+        <div class="col-4 stake">
+          <div>
+            Stake {{bet.stake | currency:'GBP'}}
+          </div>
+          <div class="return">
+            Return {{((bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake) | currency:'GBP'}}
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </section>

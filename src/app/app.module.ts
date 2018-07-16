@@ -10,16 +10,21 @@ import {EventsService} from './events.service';
 import {BettingService} from './betting/betting.service';
 import {ToastrModule} from 'ngx-toastr';
 import {NgSpinKitModule} from 'ng-spin-kit';
+import {FormsModule} from '@angular/forms';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import {MenuComponent} from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BettingModule,
+      FormsModule,
       BrowserAnimationsModule,
       BrowserModule,
       ToastrModule.forRoot({
@@ -28,7 +33,8 @@ import {NgSpinKitModule} from 'ng-spin-kit';
           progressBar: true,
           progressAnimation: 'increasing'
       }),
-      NgSpinKitModule
+      NgSpinKitModule,
+      Angular2FontawesomeModule
   ],
   providers: [
       EventsService,

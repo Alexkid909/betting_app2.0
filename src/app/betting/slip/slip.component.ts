@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SlipBet} from '../classes/slip-bet';
 import {BettingService} from '../betting.service';
 import {PlacedBet} from '../classes/placed-bets';
-import {AlertService} from 'ngx-alerts';
 import {EventsService} from '../../events.service';
 import {ToastrService} from 'ngx-toastr';
 

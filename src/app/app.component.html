@@ -1,26 +1,27 @@
 <div class="app-container">
-    <div class="nav">
-        <div class="container container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="navbar d-flex justify-content-between">
-                        <div *ngIf="currentRoute === '/'" class="nav-item">
-                            <a routerLink="/placed-bets">Placed Bets</a>
+    <div class="header">
+        <div class="nav">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-9">
+                        <div>
+                            <img class="brand-logo img-fluid" src="assets/images/bet-now-logo.png">
                         </div>
-                        <div *ngIf="currentRoute !== '/'" class="nav-item">
-                            <a routerLink="/">Available Bets</a>
-                        </div>
-                        <div *ngIf="currentRoute === '/'" class="nav-item" (click)="toggleSlip()">
-                            <span>Slip</span>
-                            <div class="slip-bet-count"><span>{{slipBetCount}}</span></div>
+                    </div>
+                    <div class="col-3 pr-4">
+                        <div class="navbar d-flex justify-content-end">
+                            <fa [name]="'bars'" [size]="2" (click)="toggleSlip()"></fa>
+                            <div class="slip-bet-count" (click)="toggleSlip()"><span>{{slipBetCount}}</span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <app-menu [ngClass]="{'active' : menuStatus}"></app-menu>
     </div>
     <router-outlet></router-outlet>
-    <div class="loader" *ngIf="loading">
+    <div class="loader"  [ngClass]="{'inactive' : !loading}">
         <div class="loader-container">
             <sk-wandering-cubes [color]="'#132C6C'"></sk-wandering-cubes>
         </div>

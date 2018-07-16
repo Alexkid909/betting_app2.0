@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { PlacedBetsComponent } from './placed-bets/placed-bets.component';
 import { BettingComponent } from './betting/betting.component';
 import {EventsService} from '../events.service';
+import {OddsComponent} from './odds/odds.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {EventsService} from '../events.service';
       AvailableBetsComponent,
       SlipComponent,
       PlacedBetsComponent,
-      BettingComponent
+      BettingComponent,
+      OddsComponent
   ],
   providers: [
     BettingService,
@@ -28,7 +30,8 @@ import {EventsService} from '../events.service';
   ],
   exports: [
       AvailableBetsComponent,
-      SlipComponent
+      SlipComponent,
+      OddsComponent
   ]
 })
 export class BettingModule { }
