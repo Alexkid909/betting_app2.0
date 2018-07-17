@@ -1,8 +1,8 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit, ViewChild} from '@angular/core';
 import {EventsService} from './events.service';
 import {BettingService} from './betting/betting.service';
 import {SlipBet} from './betting/classes/slip-bet';
-import {ToastrService} from 'ngx-toastr';
+import {ToastContainerDirective, ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   slipBetCount: number;
   loading: boolean;
   menuStatus: boolean;
+  @ViewChild(ToastContainerDirective) toastContainer: ToastContainerDirective;
+
 
   constructor(
       private eventsService: EventsService,
@@ -29,6 +31,7 @@ export class AppComponent implements OnInit {
         this.eventsService.toggleSlipStatus();
   }
     ngOnInit() {
+        this.toastrService.overlayContainer = this.toastContainer;
         this.bettingService.slipBetsSubject.subscribe((slipBets: Array<SlipBet>) => {
             this.slipBetCount = slipBets.length;
         });

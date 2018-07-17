@@ -49,6 +49,7 @@ $desktopMenuHeight: 4vw;
   }
 
   .toast-container {
+
     &.toast-top-full-width, &.toast-bottom-full-width  {
       .toast {
         width: 100%;
@@ -166,7 +167,7 @@ $desktopMenuHeight: 4vw;
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(50%, -25%);
+        transform: translate(50%, -50%);
         background-color: $red;
         display: inline-block;
         border: 2px solid white;
@@ -174,9 +175,6 @@ $desktopMenuHeight: 4vw;
         width: 1.75rem;
         height: 1.75rem;
         text-align: center;
-        span {
-          vertical-align: middle;
-        }
       }
       .brand-logo {
         margin-bottom: 0.5rem;
@@ -185,7 +183,6 @@ $desktopMenuHeight: 4vw;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        height: 100%;
         position: relative;
 
         .fa {
@@ -194,9 +191,6 @@ $desktopMenuHeight: 4vw;
           }
         }
       }
-
-
-
     }
   }
 
@@ -210,13 +204,19 @@ $desktopMenuHeight: 4vw;
     transition: transform 500ms ease-in;
     background-color: transparent;
     color: white;
+    >.container-fluid {
+      height: 100%;
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+    }
     .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 100%;
       position: relative;
-      padding: 0 0.85rem;
+      width: 100%;
 
       .fa {
         &.fa-bars {
@@ -289,11 +289,32 @@ $desktopMenuHeight: 4vw;
     }
   }
 
-  @media screen and (min-width: 768px) {
+  app-placed-bets {
+    .stake {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      flex-direction: column;
+      >div {
+        flex-basis: auto;
+      }
+    }
+  }
 
+  @media screen and (min-width: 768px) {
 
     body {
       font-size: 1vw;
+    }
+
+    .toast-container {
+        max-width: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .container-fluid {
+      max-width: 60vw;
     }
 
     .app-container {
@@ -304,6 +325,13 @@ $desktopMenuHeight: 4vw;
 
       .nav {
         height: $desktopNavHeight;
+      }
+    }
+
+    app-betting {
+      .betting-container {
+        max-width: 60vw;
+        margin: 0 auto;
       }
     }
 
