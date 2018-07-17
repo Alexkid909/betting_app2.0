@@ -9,7 +9,7 @@
                         </div>
                     </div>
                     <div class="col-3 pr-4 d-flex justify-content-end align-items-center">
-                        <div class="navbar d-flex justify-content-end">
+                        <div *ngIf="currentRoute === '/'" class="navbar d-flex justify-content-end">
                             <fa [name]="'bars'" [size]="2" (click)="toggleSlip()"></fa>
                             <div class="slip-bet-count" (click)="toggleSlip()"><span>{{slipBetCount}}</span></div>
                         </div>

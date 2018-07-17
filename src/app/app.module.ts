@@ -28,7 +28,7 @@ import {MenuComponent} from './menu/menu.component';
       BrowserAnimationsModule,
       BrowserModule,
       ToastrModule.forRoot({
-          timeOut: 100000,
+          timeOut: 3000,
           positionClass: 'toast-bottom-full-width',
           progressBar: true,
           progressAnimation: 'increasing'
